@@ -7,12 +7,13 @@
 
 :root {
     --text-color: #fff;
+    --text-hover: #fff;
     --border-color: rgba(255, 255, 255, 0.50);
     --stroke-color: rgba(255, 255, 255, 0.50);
     --surface-color: rgba(255, 255, 255, 0.10);
     --hover-button: rgba(255, 255, 255, 0.208);
     --bg-url: url("./assets/Background.png");
-    --switch-url: url("./assets/sun.svg");
+    --switch-url: url("./assets/moon-stars.svg");
 }
 
 .light {
@@ -30,6 +31,7 @@ body {
     background-image: var(--bg-url);
     background-repeat: no-repeat;
     background-size: cover;
+    height: 100vh;
 }
 
 footer {
@@ -44,7 +46,7 @@ footer h3 {
 }
 
 .container {
-    width: 360px;
+    width: 100%;
     margin: auto;
     padding-top: 30px;
 }
@@ -58,6 +60,8 @@ footer h3 {
 
 .profile img {
     width: 112px;
+    border-radius: 50%;
+    border: 1px solid #000;
 }
 
 .profile h3 {
@@ -70,6 +74,9 @@ footer h3 {
 .container-butons {
     display: flex;
     flex-direction: column;
+    width: 100%;
+    max-width: 540px;
+    padding: 0 30px;
     gap: 16px;
     margin-top: 23px;
 }
@@ -79,6 +86,7 @@ footer h3 {
     padding: 16px 24px;
     justify-content: center;
     align-items: center;
+    width: 100%;
     gap: 8px;
     align-self: stretch;
     color: var(--text-color);
@@ -124,11 +132,13 @@ footer h3 {
     top: 50%;
     transform: translateY(-50%);
     left: 0;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+
+    animation: slide-back 0.2s;
 }
 
 .light #switch button {
-    right: 0;
-    left: initial;
+    animation: slide-in 0.4s forwards;
 }
 
 .track {
@@ -140,4 +150,34 @@ footer h3 {
     border: 1px solid var(--stroke-color);
     background: var(--surface-color);
     backdrop-filter: blur(4px);
+}
+
+@media (max-width: 700px) {
+    :root {
+        --bg-url: url("./assets/b-web.png")
+    }
+
+    .light {
+        --bg-url: url("./assets/bg-web-2.png")
+    }
+}
+
+@keyframes slide-in {
+    from {
+        left: 0;
+    }
+
+    to {
+        left: 50%;
+    }
+}
+
+@keyframes slide-back {
+    from {
+        left: 50%;
+    }
+
+    to {
+        left: 0;
+    }
 }
